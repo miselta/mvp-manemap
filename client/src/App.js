@@ -80,6 +80,7 @@ function App() {
       let response = await fetch(`/stores/${id}`);
       if (response.ok) {
         let data = await response.json();
+        console.log(data);
         setStoreProfile(data);
         navigate(`/stores/${id}`);
       } else {
@@ -90,6 +91,9 @@ function App() {
     }
   }
 
+  function redirectToStore(id) {
+    navigate(`/stores/${id}`);
+  }
   return (
     <div className="App">
       <Navbar />
@@ -103,7 +107,12 @@ function App() {
         />
         <Route
           path="products/:id"
-          element={<ShowProduct product={productProfile} />}
+          element={
+            <ShowProduct
+              product={productProfile}
+              redirectToStoreCb={redirectToStore}
+            />
+          }
         />
         <Route
           path="stores"

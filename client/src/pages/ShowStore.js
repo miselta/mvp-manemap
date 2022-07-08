@@ -13,6 +13,17 @@ function ShowStore(props) {
           {s.storeAddress} <br /> {s.storeCity}
           {","} {s.storeCountry} {""}
           {s.storePostalCode}
+          <h3>Products found at this store:</h3> <br />
+          <ul className="FoundProducts">
+            {s.products.map((s) => (
+              <li>
+                <img src={s.productImage} width="200" height="200" alt="" />
+                <br />
+                {s.productName} <br /> {s.quantity}
+                {s.quantityUnits} at {s.productPrice}€
+              </li>
+            ))}
+          </ul>
         </>
       )}
     </div>

@@ -2,6 +2,40 @@ var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
 
+// join to JSON
+function joinToJson(results) {
+  // Get first row
+  let row0 = results.data[0];
+
+  // Create array of store objs
+  let stores = [];
+  if (row0.storesID) {
+    stores = results.data.map((s) => ({
+      id: s.storesID,
+      storeName: s.storeName,
+      storeAddress: s.storeAddress,
+      storeCity: s.storeCity,
+      storeCountry: s.storeCountry,
+      storePostalCode: s.storePostalCode,
+      storeImage: s.storeImage,
+      productPrice: s.productPrice,
+    }));
+  }
+
+  // Create product obj
+  let products = {
+    id: row0.productsID,
+    productName: row0.productName,
+    price: row0.price,
+    quantity: row0.quantity,
+    quantityUnits: row0.quantityUnits,
+    productImage: row0.productImage,
+    stores,
+  };
+
+  return products;
+}
+
 /* GET stores listing. */
 // router.get("/", function (req, res, next) {
 //   res.send("respond with a store");
@@ -26,48 +60,16 @@ router.get("/:id", async function (req, res, next) {
   try {
     // DO NOT USE THE ID
     let results = await db(`
-    SELECT products.ID as productsID, stores.ID as storesID, products.*, stores.*
+    SELECT products.ID as productsID, stores.ID as storesID, products.*, stores.*, products_stores.productPrice
     FROM products
     LEFT JOIN products_stores ON products.ID = products_stores.FK_productsID
     LEFT JOIN stores ON products_stores.FK_storesID = stores.ID
     WHERE products.ID = ${id}
     `);
 
-    // make it readable
-    function joinToJson(results) {
-      // Get first row
-      let row0 = results.data[0];
-
-      // Create array of book objs
-      let stores = [];
-      if (row0.storesId) {
-        stores = results.data.map((s) => ({
-          id: s.storesID,
-          storeName: s.storeName,
-          storeAddress: s.storeAddress,
-          storeCity: s.storeCity,
-          storeCountry: s.storeCountry,
-          storePostalCode: s.storePostalCode,
-          storeImage: s.storeImage,
-        }));
-      }
-
-      // Create author obj
-      let products = {
-        id: row0.productsID,
-        productName: p.productName,
-        price: p.price,
-        quantity: p.quantity,
-        quantityUnits: p.quantityUnits,
-        productImage: p.productImage,
-        stores,
-      };
-
-      return products;
-    }
-
     // res.status(201).send(results.data);
-    let products = await results.data;
+    let products = await results;
+    products = joinToJson(products);
     // checking if the response array is empty, meaning the store doesnt exist
     if (products.length === 0) {
       res.status(404).send({ error: "This product does not exist" });

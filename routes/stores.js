@@ -7,6 +7,41 @@ const db = require("../model/helper");
 //   res.send("respond with a store");
 // });
 
+// join to JSON
+function joinToJson(results) {
+  // Get first row
+  let row0 = results.data[0];
+
+  // Create array of product objs
+  let products = [];
+  if (row0.productsID) {
+    products = results.data.map((p) => ({
+      id: p.productsID,
+      productName: p.productName,
+      price: p.price,
+      quantity: p.quantity,
+      quantityUnits: p.quantityUnits,
+      productImage: p.productImage,
+      // ????
+      // productPrice: s.productPrice,
+    }));
+  }
+
+  // Create product obj
+  let stores = {
+    id: row0.storesID,
+    storeName: row0.storeName,
+    storeAddress: row0.storeAddress,
+    storeCity: row0.storeCity,
+    storeCountry: row0.storeCountry,
+    storePostalCode: row0.storePostalCode,
+    storeImage: row0.storeImage,
+    products,
+  };
+
+  return stores;
+}
+
 // GET store list
 router.get("/", async function (req, res, next) {
   try {
@@ -22,13 +57,21 @@ router.get("/:id", async function (req, res, next) {
   let { id } = req.params;
 
   try {
-    const results = await db(`SELECT * FROM stores WHERE id = ${id};`);
+    // DO NOT USE THE ID
+    let results = await db(`
+    SELECT stores.ID as storesID, products.ID as productsID, stores.*, products.*
+    FROM stores
+    LEFT JOIN products_stores ON stores.ID = products_stores.FK_storesID
+    LEFT JOIN products ON products_stores.FK_productsID = products.ID
+    WHERE stores.ID = ${id}
+    `);
     // res.status(201).send(results.data);
-    let stores = results.data;
+    let stores = await results;
+    stores = joinToJson(stores);
     if (stores.length === 0) {
       res.status(404).send({ error: "This store does not exist" });
     } else {
-      res.send(stores[0]);
+      res.send(stores);
     }
   } catch (err) {
     res.status(500).send({ error: err.message });
