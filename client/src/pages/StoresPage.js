@@ -10,7 +10,7 @@ function StoresPage(props) {
       <ul className="StoresList">
         {props.stores.map((s) => (
           <li key={s.ID} onClick={(e) => props.showStoreCb(s.ID)}>
-            {s.storeName} <br />
+            <h3>{s.storeName}</h3> <br />
             <img src={s.storeImage} width="500" height="300" alt="" /> <br />
             {s.storeAddress} <br /> {s.storeCity}
             {","} {s.storeCountry} {""}

@@ -9,6 +9,8 @@ import ProductsPage from "./pages/ProductsPage";
 import StoresPage from "./pages/StoresPage";
 import ShowProduct from "./pages/ShowProduct";
 import ShowStore from "./pages/ShowStore";
+import NewProductForm from "./pages/NewProductForm";
+import NewStoreForm from "./pages/NewStoreForm";
 
 function App() {
   const navigate = useNavigate();
@@ -56,6 +58,29 @@ function App() {
     }
   }
 
+  // add products
+  async function addProducts(newProduct) {
+    newProduct.id = products.length + 1;
+
+    let options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newProduct),
+    };
+
+    try {
+      let response = await fetch("/products", options);
+      if (response.ok) {
+        let data = await response.json();
+        setProducts(data);
+      } else {
+        console.log(`server error: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log(`network error: ${err.message}`);
+    }
+  }
+
   // get stores function
   async function getStores() {
     let options = {
@@ -91,9 +116,47 @@ function App() {
     }
   }
 
-  function redirectToStore(id) {
-    navigate(`/stores/${id}`);
+  // add products
+  async function addStores(newStore) {
+    newStore.id = stores.length + 1;
+
+    let options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newStore),
+    };
+
+    try {
+      let response = await fetch("/stores", options);
+      if (response.ok) {
+        let data = await response.json();
+        setStores(data);
+      } else {
+        console.log(`server error: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log(`network error: ${err.message}`);
+    }
   }
+
+  // redirect to product
+  function redirectToProduct(id) {
+    setProductProfile(null); // remove old product if there was one
+    showProduct(id); //fetch product, save in productProfile state, and redirect
+  }
+
+  // redirect to store
+  function redirectToStore(id) {
+    setStoreProfile(null); // remove old store if there was one
+    showStore(id); //fetch store, save in storeProfile state, and redirect
+  }
+
+  // search for product function
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   handleProductSearch(query);
+  // }
+
   return (
     <div className="App">
       <Navbar />
@@ -102,7 +165,11 @@ function App() {
         <Route
           path="products"
           element={
-            <ProductsPage products={products} showProductCb={showProduct} />
+            <ProductsPage
+              products={products}
+              showProductCb={showProduct}
+              // handleProductSearchCb={handleProductSearch}
+            />
           }
         />
         <Route
@@ -115,10 +182,26 @@ function App() {
           }
         />
         <Route
+          path="/add-products"
+          element={<NewProductForm addProductsCb={addProducts} />}
+        />
+        <Route
           path="stores"
           element={<StoresPage stores={stores} showStoreCb={showStore} />}
         />
-        <Route path="stores/:id" element={<ShowStore store={storeProfile} />} />
+        <Route
+          path="stores/:id"
+          element={
+            <ShowStore
+              store={storeProfile}
+              redirectToProductCb={redirectToProduct}
+            />
+          }
+        />
+        <Route
+          path="/add-stores"
+          element={<NewStoreForm addStoresCb={addStores} />}
+        />
       </Routes>
 
       {/* <HomePage />

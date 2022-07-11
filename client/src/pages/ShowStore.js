@@ -1,4 +1,5 @@
 import React from "react";
+// import { Link } from "react-router-dom";
 
 function ShowStore(props) {
   let s = props.store;
@@ -13,10 +14,10 @@ function ShowStore(props) {
           {s.storeAddress} <br /> {s.storeCity}
           {","} {s.storeCountry} {""}
           {s.storePostalCode}
-          <h3>Products found at this store:</h3> <br />
+          <h3>Some products found at this store:</h3> <br />
           <ul className="FoundProducts">
             {s.products.map((s) => (
-              <li>
+              <li key={s.id} onClick={(e) => props.redirectToProductCb(s.id)}>
                 <img src={s.productImage} width="200" height="200" alt="" />
                 <br />
                 {s.productName} <br /> {s.quantity}

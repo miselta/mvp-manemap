@@ -81,11 +81,19 @@ router.get("/:id", async function (req, res, next) {
 // INSERT a new store into the DB
 router.post("/", async function (req, res) {
   //your code here
-  let { storeName, storeAddress, storeCity, storeCountry, storePostalCode } =
-    req.body;
+  let {
+    storeName,
+    storeAddress,
+    storeCity,
+    storeCountry,
+    storePostalCode,
+    storeImage,
+    blackOwned,
+    localOwned,
+  } = req.body;
   try {
-    await db(`INSERT INTO stores (storeName, storeAddress, storeCity, storeCountry, storePostalCode) VALUES
-  ('${storeName}', '${storeAddress}', '${storeCity}', '${storeCountry}', '${storePostalCode}');`);
+    await db(`INSERT INTO stores (storeName, storeAddress, storeCity, storeCountry, storePostalCode, storeImage, blackOwned, localOwned) VALUES
+  ('${storeName}', '${storeAddress}', '${storeCity}', '${storeCountry}', '${storePostalCode}', '${storeImage}', ${blackOwned}, ${localOwned});`);
     // then return the list of stores
     const results = await db(`SELECT * FROM stores`);
     // message number 201 means 'new resource created'

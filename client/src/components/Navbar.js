@@ -15,7 +15,12 @@ function Navbar() {
         <li>
           <NavLink to="/stores">Stores</NavLink>
         </li>
-        {/* <li><NavLink to="/add-user">Add User</NavLink></li> */}
+        <li>
+          <NavLink to="/add-products">Add a Product</NavLink>
+        </li>
+        <li>
+          <NavLink to="/add-stores">Add a Store</NavLink>
+        </li>
         {/* <li><NavLink to="/bad-route">Bad!</NavLink></li> */}
       </ul>
     </nav>

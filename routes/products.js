@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
 
-// join to JSON
+// join to JSON helper function
 function joinToJson(results) {
   // Get first row
   let row0 = results.data[0];
@@ -36,6 +36,27 @@ function joinToJson(results) {
   return products;
 }
 
+// make WHERE from filters helper function (takes a query parameter)
+function makeWhereFromFilters(q) {
+  let filters = [];
+
+  if (q.productName) {
+    filters.push(`productName = '${q.productName}'`);
+  }
+  if (q.storeName) {
+    filters.push(`storeName = '${q.storeName}'`);
+  }
+  if (q.storeCity) {
+    filters.push(`storeCity = '${q.storeCity}'`);
+  }
+  if (q.storeCountry) {
+    filters.push(`storeCity = '${q.storeCountry}'`);
+  }
+
+  // Return all filters joined by AND (for the sake of SQL syntax)
+  return filters.join(" AND ");
+}
+
 /* GET stores listing. */
 // router.get("/", function (req, res, next) {
 //   res.send("respond with a store");
@@ -44,9 +65,14 @@ function joinToJson(results) {
 // GET product list
 // this slash already refers to products because in app.js it is specified there,
 // and doesn't need to be specified again here
-router.get("/", async function (req, res, next) {
+router.get("/", async function (req, res) {
+  let sql = "SELECT * FROM products ";
+  let where = makeWhereFromFilters(req.query); // make optional WHERE from query parameters
   try {
-    const results = await db("SELECT * FROM products;");
+    if (where) {
+      sql += `WHERE ${where}`;
+    }
+    const results = await db(sql);
     res.send(results.data);
   } catch (err) {
     res.status(500).send(err);
@@ -63,7 +89,7 @@ router.get("/:id", async function (req, res, next) {
     SELECT products.ID as productsID, stores.ID as storesID, products.*, stores.*, products_stores.productPrice
     FROM products
     LEFT JOIN products_stores ON products.ID = products_stores.FK_productsID
-    LEFT JOIN stores ON products_stores.FK_storesID = stores.ID
+    LEFT JOIN stores ON stores.ID = products_stores.FK_storesID
     WHERE products.ID = ${id}
     `);
 
@@ -85,12 +111,12 @@ router.get("/:id", async function (req, res, next) {
 // INSERT a new product into the DB
 router.post("/", async function (req, res) {
   //your code here
-  let { productName, price, quantity, quantityUnits } = req.body;
+  let { productName, price, quantity, quantityUnits, productImage } = req.body;
   // we usually use req.body for post because were ADDING to something through that is in the body
   // as opposed to req.params which is trying to FIND something based on a specific value in the param
   try {
-    await db(`INSERT INTO products (productName, price, quantity, quantityUnits) VALUES
-    ('${productName}', ${price}, ${quantity}, '${quantityUnits}')`);
+    await db(`INSERT INTO products (productName, price, quantity, quantityUnits, productImage) VALUES
+    ('${productName}', ${price}, ${quantity}, '${quantityUnits}', '${productImage}')`);
     // then return the list of products
     const results = await db(`SELECT * FROM products`);
     // message number 201 means 'new resource created'
