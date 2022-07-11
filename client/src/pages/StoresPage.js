@@ -1,4 +1,5 @@
 import React from "react";
+import "./StoresPage.css";
 
 function StoresPage(props) {
   if (!props.stores) {
@@ -9,7 +10,11 @@ function StoresPage(props) {
       <h2>Stores</h2>
       <ul className="StoresList">
         {props.stores.map((s) => (
-          <li key={s.ID} onClick={(e) => props.showStoreCb(s.ID)}>
+          <li
+            className="Store"
+            key={s.ID}
+            onClick={(e) => props.showStoreCb(s.ID)}
+          >
             <h3>{s.storeName}</h3> <br />
             <img src={s.storeImage} width="500" height="300" alt="" /> <br />
             {s.storeAddress} <br /> {s.storeCity}

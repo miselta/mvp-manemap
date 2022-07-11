@@ -72,7 +72,7 @@ function NewProductForm(props) {
           />
         </label>
         <label>
-          Image URL
+          Product Image
           <input
             name="productImage"
             type="text"

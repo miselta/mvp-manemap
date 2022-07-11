@@ -22,8 +22,7 @@ function joinToJson(results) {
       quantity: p.quantity,
       quantityUnits: p.quantityUnits,
       productImage: p.productImage,
-      // ????
-      // productPrice: s.productPrice,
+      productPrice: p.productPrice,
     }));
   }
 
@@ -59,7 +58,7 @@ router.get("/:id", async function (req, res, next) {
   try {
     // DO NOT USE THE ID
     let results = await db(`
-    SELECT stores.ID as storesID, products.ID as productsID, stores.*, products.*
+    SELECT stores.ID as storesID, products.ID as productsID, stores.*, products.*, products_stores.productPrice
     FROM stores
     LEFT JOIN products_stores ON stores.ID = products_stores.FK_storesID
     LEFT JOIN products ON products_stores.FK_productsID = products.ID

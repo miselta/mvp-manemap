@@ -41,16 +41,16 @@ function makeWhereFromFilters(q) {
   let filters = [];
 
   if (q.productName) {
-    filters.push(`productName = '${q.productName}'`);
+    filters.push(`products.productName = '${q.productName.replace("+", " ")}'`);
   }
   if (q.storeName) {
-    filters.push(`storeName = '${q.storeName}'`);
+    filters.push(`stores.storeName = '${q.storeName.replace("+", " ")}'`);
   }
   if (q.storeCity) {
-    filters.push(`storeCity = '${q.storeCity}'`);
+    filters.push(`stores.storeCity = '${q.storeCity.replace("+", " ")}'`);
   }
   if (q.storeCountry) {
-    filters.push(`storeCity = '${q.storeCountry}'`);
+    filters.push(`stores.storeCountry = '${q.storeCountry.replace("+", " ")}'`);
   }
 
   // Return all filters joined by AND (for the sake of SQL syntax)
@@ -68,9 +68,14 @@ function makeWhereFromFilters(q) {
 router.get("/", async function (req, res) {
   let sql = "SELECT * FROM products ";
   let where = makeWhereFromFilters(req.query); // make optional WHERE from query parameters
+  console.log(where);
   try {
     if (where) {
-      sql += `WHERE ${where}`;
+      // inner joins to enable searching with filters
+      // on postman, the first ID column refers to store ID, better to just ignore it and
+      // read through FK_productsID and FK_storesID to know which is which
+      sql += `INNER JOIN products_stores ON products_stores.FK_storesID = products.ID
+      INNER JOIN stores ON products_stores.FK_productsID = stores.ID WHERE ${where}`;
     }
     const results = await db(sql);
     res.send(results.data);

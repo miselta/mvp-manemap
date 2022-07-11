@@ -17,7 +17,11 @@ function ShowStore(props) {
           <h3>Some products found at this store:</h3> <br />
           <ul className="FoundProducts">
             {s.products.map((s) => (
-              <li key={s.id} onClick={(e) => props.redirectToProductCb(s.id)}>
+              <li
+                key={s.id}
+                style={{ listStyleType: "none" }}
+                onClick={(e) => props.redirectToProductCb(s.id)}
+              >
                 <img src={s.productImage} width="200" height="200" alt="" />
                 <br />
                 {s.productName} <br /> {s.quantity}

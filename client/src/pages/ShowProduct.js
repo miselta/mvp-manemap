@@ -7,7 +7,7 @@ function ShowProduct(props) {
       {p && (
         <>
           <img src={p.productImage} width="500" height="500" alt="" />
-          <h2>{p.productName}</h2> {p.price}€ {p.quantity} {p.quantityUnits}
+          <h2>{p.productName}</h2> {p.quantity} {p.quantityUnits}
           <p>Description about this super cool product!</p>
           <h3>This product has been found at:</h3> <br />
           <ul className="FoundAtStores">

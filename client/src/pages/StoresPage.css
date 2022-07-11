@@ -1,0 +1,14 @@
+.StoresList {
+  list-style: none;
+  column-count: 2;
+  column-gap: 5px;
+}
+
+.Store {
+  margin-bottom: 30px;
+}
+
+/* .Form {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  /* background-color: #fae1be; */

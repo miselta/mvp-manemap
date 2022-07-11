@@ -18,14 +18,43 @@ function App() {
   const [stores, setStores] = useState([]);
   const [productProfile, setProductProfile] = useState({});
   const [storeProfile, setStoreProfile] = useState({});
+  // const [featuredProducts, setFeaturedProducts] = useState([]);
 
   useEffect(() => {
-    getProducts();
+    getAllProducts();
     getStores();
   }, []);
 
   // get products function
-  async function getProducts() {
+  async function getProducts(filters) {
+    let fetchString = "/products";
+    if (filters) {
+      let filter = Object.keys(filters)
+        .filter((q) => filters[q].length > 0)
+        .map((e) => `${e}=${filters[e].replace(" ", "+")}`)
+        .join("&");
+      console.log(filters);
+      fetchString += `?${filter}`;
+      console.log(fetchString);
+    }
+    let options = {
+      method: "GET",
+    };
+    try {
+      let response = await fetch(fetchString, options);
+      if (response.ok) {
+        let data = await response.json();
+        setProducts(data);
+      } else {
+        console.log(`server error: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log(`network error: ${err.message}`);
+    }
+  }
+
+  // get ALL products
+  async function getAllProducts() {
     let options = {
       method: "GET",
     };
@@ -44,6 +73,7 @@ function App() {
 
   // get products by id function
   async function showProduct(id) {
+    console.log(id);
     try {
       let response = await fetch(`/products/${id}`);
       if (response.ok) {
@@ -81,6 +111,29 @@ function App() {
     }
   }
 
+  // // feature products
+  // async function featureProducts() {
+  //   setFeaturedProducts([]);
+  //   let options = {
+  //     method: "GET",
+  //   };
+  //   if (featuredProducts.length < 3) {
+  //     try {
+  //       let response = await fetch("/products", options);
+  //       if (response.ok) {
+  //         let data = await response.json();
+  //         setFeaturedProducts(data);
+  //       } else {
+  //         console.log(
+  //           `server error: ${response.status} ${response.statusText}`
+  //         );
+  //       }
+  //     } catch (err) {
+  //       console.log(`network error: ${err.message}`);
+  //     }
+  //   }
+  // }
+
   // get stores function
   async function getStores() {
     let options = {
@@ -105,7 +158,6 @@ function App() {
       let response = await fetch(`/stores/${id}`);
       if (response.ok) {
         let data = await response.json();
-        console.log(data);
         setStoreProfile(data);
         navigate(`/stores/${id}`);
       } else {
@@ -161,14 +213,25 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/"
+          element={
+            <HomePage
+              products={products}
+              stores={stores}
+              showProductCb={showProduct}
+              showStoreCb={showStore}
+            />
+          }
+        />
         <Route
           path="products"
           element={
             <ProductsPage
               products={products}
               showProductCb={showProduct}
-              // handleProductSearchCb={handleProductSearch}
+              getProductsCb={getProducts}
+              getAllProductsCb={getAllProducts}
             />
           }
         />
@@ -203,11 +266,10 @@ function App() {
           element={<NewStoreForm addStoresCb={addStores} />}
         />
       </Routes>
-
+      <header className="App-header"></header>
       {/* <HomePage />
       <ProductsPage />
       <StoresPage /> */}
-      <header className="App-header"></header>
     </div>
   );
 }
