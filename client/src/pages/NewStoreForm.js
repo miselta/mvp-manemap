@@ -85,7 +85,9 @@ function NewStoreForm(props) {
             required
           />
         </label>
-        <button type="submit">Add Store</button>
+        <button type="submit" class="btn btn-light">
+          Add Store
+        </button>
       </form>
     </div>
   );

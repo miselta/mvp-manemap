@@ -81,7 +81,13 @@ function NewProductForm(props) {
             required
           />
         </label>
-        <button type="submit">Add Product</button>
+        {/* <label for="stores">Stores to find this in</label>
+        <select name="stores" id="stores">
+          <option value="volvo">Volvo</option>
+        </select> */}
+        <button type="submit" class="btn btn-light">
+          Add Product
+        </button>
       </form>
     </div>
   );

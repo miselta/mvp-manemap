@@ -11,9 +11,13 @@ function HomePage(props) {
       <h2>Your global directory for all things beauty supply!</h2>
       <div className="FeaturedContainer">
         <h2>Featured Products</h2>
-        <ul className="FeaturedProducts" style={{ listStyleType: "none" }}>
-          {props.products.slice(3, 6).map((p) => (
-            <li key={p.ID} onClick={(e) => props.showProductCb(p.ID)}>
+        <ul className="card-group" style={{ listStyleType: "none" }}>
+          {props.products.slice(2, 5).map((p) => (
+            <li
+              className="FeaturedProducts"
+              key={p.ID}
+              onClick={(e) => props.showProductCb(p.ID)}
+            >
               <img src={p.productImage} width="200" height="200" alt="" />{" "}
               <br />
               <h4>{p.productName}</h4> <br /> {p.quantity} {p.quantityUnits}
@@ -21,8 +25,8 @@ function HomePage(props) {
           ))}
         </ul>
         <h2>Featured Stores</h2>
-        <ul className="FeaturedStores" style={{ listStyleType: "none" }}>
-          {props.stores.slice(2, 5).map((s) => (
+        <ul className="card-group" style={{ listStyleType: "none" }}>
+          {props.stores.slice(0, 2).map((s) => (
             <li
               className="Store"
               key={s.ID}

@@ -3,13 +3,13 @@
   margin-top: 0px;
 }
 
-.FeaturedProducts {
+/* .FeaturedProducts {
   margin-left: 100px;
   margin-right: 100px;
   column-count: 3;
   column-gap: 5px;
   background-color: white;
-}
+} */
 
 .FeaturedStores {
   margin-left: 100px;
@@ -20,7 +20,7 @@
 }
 
 .FeaturedContainer {
-  background-color: #a8b2f7;
+  background-color: white;
 }
 
 h4 {

@@ -1,6 +1,8 @@
 nav {
   border: 1px solid #ccc;
   background-color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 nav ul {

@@ -55,8 +55,14 @@ function ProductsPage(props) {
           onChange={handleChange}
           placeholder="country (optional)"
         ></input>{" "}
-        <button type="submit">Search</button>
-        <button type="button" onClick={props.getAllProductsCb}>
+        <button type="submit" class="btn btn-light">
+          Search
+        </button>
+        <button
+          type="button"
+          class="btn btn-light"
+          onClick={props.getAllProductsCb}
+        >
           Show All Products
         </button>
       </form>
@@ -66,7 +72,7 @@ function ProductsPage(props) {
             className="Product"
             key={p.ID}
             // this should not be storesID
-            onClick={(e) => props.showProductCb(p.ID)}
+            onClick={(e) => props.showProductCb(p.productsID)}
           >
             <img src={p.productImage} width="200" height="200" alt="" /> <br />
             <h4>{p.productName}</h4> {p.quantity} {p.quantityUnits} <br />

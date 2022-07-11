@@ -12,14 +12,18 @@ function ShowProduct(props) {
           <h3>This product has been found at:</h3> <br />
           <ul className="FoundAtStores">
             {p.stores.map((p) => (
-              <li key={p.id} onClick={(e) => props.redirectToStoreCb(p.id)}>
+              <li
+                key={p.id}
+                style={{ listStyleType: "none" }}
+                onClick={(e) => props.redirectToStoreCb(p.id)}
+              >
                 <img src={p.storeImage} width="200" height="200" alt="" />{" "}
                 <br />
                 <h4>{p.storeName}</h4>
-                at {p.productPrice}€ <br />
-                {p.storeAddress} <br /> {p.storeCity}
+                <br /> {p.storeCity}
                 {","} {p.storeCountry} {""}
-                {p.storePostalCode}
+                {p.storePostalCode} <br />
+                priced at {p.productPrice}€
               </li>
             ))}
           </ul>

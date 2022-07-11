@@ -66,7 +66,7 @@ function makeWhereFromFilters(q) {
 // this slash already refers to products because in app.js it is specified there,
 // and doesn't need to be specified again here
 router.get("/", async function (req, res) {
-  let sql = "SELECT * FROM products ";
+  let sql = "SELECT *, products.ID AS productsID FROM products ";
   let where = makeWhereFromFilters(req.query); // make optional WHERE from query parameters
   console.log(where);
   try {
