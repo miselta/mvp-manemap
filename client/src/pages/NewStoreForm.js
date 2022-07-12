@@ -17,6 +17,7 @@ function NewStoreForm(props) {
     event.preventDefault();
     props.addStoresCb(form);
     setForm(EMPTY_FORM);
+    alert("New Store Added!");
   }
 
   function handleChange(event) {

@@ -7,10 +7,12 @@ function HomePage(props) {
   }
   return (
     <div className="HomeView">
-      <h1>ManeMap</h1>
-      <h2>Your global directory for all things beauty supply!</h2>
-      <div className="FeaturedContainer">
-        <h2>Featured Products</h2>
+      <div class="circular_image">
+        <img src="https://64.media.tumblr.com/696ea4936a2198921e6e20d37c46a2fc/dae72e0549a3185c-0e/s1280x1920/bfa0124b65298344e5ad50232c04344b833aaf66.jpg" />
+      </div>
+      <h2>Your Global Directory for All Things Beauty Supply!</h2>
+      <div className="FeaturedContainer mt-5">
+        <h2 className="mt-10">Featured Products</h2>
         <ul className="card-group" style={{ listStyleType: "none" }}>
           {props.products.slice(2, 5).map((p) => (
             <li
@@ -24,16 +26,17 @@ function HomePage(props) {
             </li>
           ))}
         </ul>
-        <h2>Featured Stores</h2>
-        <ul className="card-group" style={{ listStyleType: "none" }}>
+        <div className="border"></div>
+        <h2 className="mt-3">Featured Stores</h2>
+        <ul className="FeaturedStores" style={{ listStyleType: "none" }}>
           {props.stores.slice(0, 2).map((s) => (
             <li
               className="Store"
               key={s.ID}
               onClick={(e) => props.showStoreCb(s.ID)}
             >
-              <h3>{s.storeName}</h3> <br />
-              <img src={s.storeImage} width="500" height="300" alt="" /> <br />
+              <img src={s.storeImage} width="500" height="300" alt="" /> <br />{" "}
+              <h3>{s.storeName}</h3>
               <br /> {s.storeCity}
               {","} {s.storeCountry} {""}
             </li>

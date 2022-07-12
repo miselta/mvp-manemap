@@ -18,6 +18,7 @@ function NewProductForm(props) {
     event.preventDefault();
     props.addProductsCb(form);
     setForm(EMPTY_FORM);
+    alert("New Product Added!");
   }
 
   function handleChange(event) {

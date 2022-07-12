@@ -8,7 +8,10 @@ function ShowProduct(props) {
         <>
           <img src={p.productImage} width="500" height="500" alt="" />
           <h2>{p.productName}</h2> {p.quantity} {p.quantityUnits}
-          <p>Description about this super cool product!</p>
+          <p>
+            This product is being described here, and there are so many awesome
+            things about it. Yay!
+          </p>
           <h3>This product has been found at:</h3> <br />
           <ul className="FoundAtStores">
             {p.stores.map((p) => (

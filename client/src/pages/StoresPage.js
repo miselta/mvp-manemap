@@ -17,8 +17,12 @@ function StoresPage(props) {
             onClick={(e) => props.showStoreCb(s.ID)}
           >
             <h3>{s.storeName}</h3> <br />
-            <img src={s.storeImage} width="500" height="300" alt="" /> <br />
-            {s.storeAddress} <br /> {s.storeCity}
+            <img
+              src={s.storeImage}
+              width="500"
+              height="300"
+              alt=""
+            /> <br /> {s.storeCity}
             {","} {s.storeCountry} {""}
             {s.storePostalCode}
           </li>

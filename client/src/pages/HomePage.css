@@ -1,28 +1,69 @@
 .HomeView {
   background-color: #fae1be;
   margin-top: 0px;
+  margin-bottom: 40px;
 }
 
-/* .FeaturedProducts {
-  margin-left: 100px;
-  margin-right: 100px;
-  column-count: 3;
-  column-gap: 5px;
-  background-color: white;
+/* .card-group {
+  width: 1500px;
+  height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: rotate(-90deg) translateY(-100px);
+  transform-origin: right top;
 } */
+
+/* .FeaturedProducts {
+  width: 500px;
+  height: 100px;
+  transform: rotate(90deg);
+  transform-origin: right top;
+} */
+
+.FeaturedProducts {
+  margin-top: 40px;
+}
 
 .FeaturedStores {
   margin-left: 100px;
   margin-right: 100px;
-  column-count: 2;
-  column-gap: 5px;
+  margin-top: 40px;
+  /* column-count: 2;
+  column-gap: 20px; */
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 150 px;
+  display: grid;
   background-color: white;
 }
 
 .FeaturedContainer {
   background-color: white;
+  margin-top: 40px;
 }
 
 h4 {
   margin-bottom: 0.5px;
+}
+
+.circular_image {
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  overflow: hidden;
+  /* background-color: blue; */
+  /* commented for demo
+  float: left;
+  margin-left: 125px;
+  margin-top: 20px;
+  */
+
+  /*for demo*/
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.circular_image img {
+  width: 100%;
 }
