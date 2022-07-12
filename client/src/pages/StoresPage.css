@@ -8,6 +8,10 @@
   margin-bottom: 30px;
 }
 
+.border {
+  stroke: #e08baf;
+}
+
 /* .Form {
   margin-top: 20px;
   margin-bottom: 30px;

@@ -31,30 +31,42 @@ function ProductsPage(props) {
       <form className="Form" onSubmit={handleSubmit}>
         {" "}
         Looking for something specific? <br />
-        <input
-          name="productName"
-          value={form.productName}
-          onChange={handleChange}
-          placeholder="product name/keyword"
-        ></input>{" "}
-        <input
-          name="storeName"
-          value={form.storeName}
-          onChange={handleChange}
-          placeholder="store name (optional)"
-        ></input>{" "}
-        <input
-          name="storeCity"
-          value={form.storeCity}
-          onChange={handleChange}
-          placeholder="city (optional)"
-        ></input>{" "}
-        <input
-          name="storeCountry"
-          value={form.storeCountry}
-          onChange={handleChange}
-          placeholder="country (optional)"
-        ></input>{" "}
+        <label className="form-label">
+          <input
+            name="productName"
+            value={form.productName}
+            onChange={handleChange}
+            placeholder="product name/keyword"
+            className="form-control col sm"
+          ></input>
+        </label>{" "}
+        <label className="form-label">
+          <input
+            name="storeName"
+            value={form.storeName}
+            onChange={handleChange}
+            placeholder="store name (optional)"
+            className="form-control"
+          ></input>
+        </label>{" "}
+        <label className="form-label">
+          <input
+            name="storeCity"
+            value={form.storeCity}
+            onChange={handleChange}
+            placeholder="city (optional)"
+            className="form-control"
+          ></input>
+        </label>{" "}
+        <label className="form-label">
+          <input
+            name="storeCountry"
+            value={form.storeCountry}
+            onChange={handleChange}
+            placeholder="country (optional)"
+            className="form-control"
+          ></input>
+        </label>{" "}
         <button type="submit" class="btn btn-light">
           Search
         </button>

@@ -7,7 +7,7 @@ function HomePage(props) {
   }
   return (
     <div className="HomeView">
-      <h1>Insert name here!</h1>
+      <h1>ManeMap</h1>
       <h2>Your global directory for all things beauty supply!</h2>
       <div className="FeaturedContainer">
         <h2>Featured Products</h2>

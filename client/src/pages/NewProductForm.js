@@ -29,53 +29,61 @@ function NewProductForm(props) {
     <div>
       {" "}
       <h2>Add a new product to the directory! </h2>
-      <form onSubmit={handleSubmit} className="NewProductForm">
-        <label>
+      <form onSubmit={handleSubmit} className="NewProductForm mb-3 ms-5">
+        <label className="form-label col-sm-3 mt-5">
           Product Name
           <input
             name="productName"
             type="text"
+            className="form-control"
             value={form.productName}
             onChange={handleChange}
             required
           />
         </label>
-
-        <label>
-          Price
+        {/* <label className="form-label">
+          Price (€)
           <input
             name="price"
             type="number"
             min="0"
+            className="form-control ms-5 m-2"
             value={form.price}
             onChange={handleChange}
             required
           />
-        </label>
-        <label>
+        </label> */}
+        <label className="form-label col-sm-2">
           Quantity
           <input
             name="quantity"
             type="number"
             min="0"
+            className="form-control ms-5"
             value={form.quantity}
             onChange={handleChange}
             required
-          />
+          />{" "}
+        </label>
+        <label className="form-label col-sm-2">
+          Units
           <input
             name="quantityUnits"
             type="text"
             placeholder="e.g: ml, g, packs, etc."
+            className="form-control ms-5 m-2"
             value={form.quantityUnits}
             onChange={handleChange}
             required
-          />
+          />{" "}
         </label>
-        <label>
+        <br /> <br />
+        <label className="form-label col-sm-5">
           Product Image
           <input
             name="productImage"
             type="text"
+            className="form-control ms-5"
             value={form.productImage}
             onChange={handleChange}
             required
@@ -85,7 +93,7 @@ function NewProductForm(props) {
         <select name="stores" id="stores">
           <option value="volvo">Volvo</option>
         </select> */}
-        <button type="submit" class="btn btn-light">
+        <button type="submit" class="btn btn-light ms-5">
           Add Product
         </button>
       </form>

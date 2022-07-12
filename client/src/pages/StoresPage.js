@@ -8,10 +8,10 @@ function StoresPage(props) {
   return (
     <div className="StoresPage">
       <h2>Stores</h2>
-      <ul className="card-group ">
+      <ul className="StoresList">
         {props.stores.map((s) => (
           <li
-            className="Store"
+            className="Store border"
             key={s.ID}
             style={{ listStyleType: "none" }}
             onClick={(e) => props.showStoreCb(s.ID)}
