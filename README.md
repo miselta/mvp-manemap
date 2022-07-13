@@ -17,7 +17,7 @@ This project is called ManeMap, a directory of beauty supply products & stores. 
 - React & React Router: To get the FrontEnd working.
 - Bootstrap (optional): For styling - I used a combination of this with Vanilla CSS.
 
-# DATABASE & STRUCTURE
+# DATABASE & STRUCTURE INSTALATION
 
 The database consists of three tables - products, stores, and the junction table called products_stores.
 You can view that here:
@@ -25,19 +25,25 @@ You can view that here:
 
 There is an `INIT_DB.SQL` file with the SQL commands in it, as well as the default data at the bottom of it.
 
-# INSTALATION
+To install the database:
 
-- After you clone the file, run `npm install` in your terminal.
-- Then, run `npm start` to run the model.
-- Then, `cd client` to access the client folder, and run `npm start` again to run the client.
-- Create a `.env` file with the following information:
+- In your terminal, access the MySQL interface by running `mysql -u root -p`
+- Create a new database called hair, run the command: `create database hair;`
+- In VSCode: create a `.env` file with the following information:
   DB_HOST=localhost
   DB_USER=root
   DB_NAME=hair
   DB_PASS=(your password here)
 - Create a `.gitignore` file, then add the line `node_modules/` to it.
-- Add the line `.env`` to your .gitignore file.
-- Take a look at the `INIT_DB.SQL` file for the current database information, and run `npm run migrate` to install the database, and run this command again every time you make changes to that file - so that they can be updated.
+- Add the line `.env` to your `.gitignore` file.
+- Take a look at the `INIT_DB.SQL` file in the model folder for the current database information, and run `npm run migrate` to update the database with this information. Run this command again every time you make changes to that file - so that they can be updated.
+- In your MySQL console, you can run `use hair;` and then `describe hair;` to see the structure of the reviews table.
+
+# BE/FE INSTALATION
+
+- After you clone the git repository, run `npm install` in your terminal.
+- Then, run `npm start` to run the model.
+- Then, run `cd client` on the project folder to access the client folder, and run `npm start` again to run the client.
 - Feliz coding!!
 
 # BUGS:
