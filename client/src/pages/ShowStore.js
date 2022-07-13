@@ -1,11 +1,12 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 
+// this is the view for showing one store's profile
 function ShowStore(props) {
   let s = props.store;
   return (
     <div className="ShowStore">
-      {/* only if s exists, do the following */}
+      {/* only if store exists, do the following */}
       {s && (
         <>
           <h2>{s.storeName}</h2>

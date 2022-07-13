@@ -37,6 +37,7 @@ function joinToJson(results) {
 }
 
 // make WHERE from filters helper function (takes a query parameter)
+// used in get route, for searching through products
 function makeWhereFromFilters(q) {
   let filters = [];
 
@@ -57,21 +58,16 @@ function makeWhereFromFilters(q) {
   return filters.join(" AND ");
 }
 
-/* GET stores listing. */
-// router.get("/", function (req, res, next) {
-//   res.send("respond with a store");
-// });
-
 // GET product list
-// this slash already refers to products because in app.js it is specified there,
-// and doesn't need to be specified again here
+// this slash already refers to products because in app.js it is specified there
+// all the info for query parameters, used in search, is included here
 router.get("/", async function (req, res) {
   let sql = "SELECT *, products.ID AS productsID FROM products ";
   let where = makeWhereFromFilters(req.query); // make optional WHERE from query parameters
-  console.log(where);
+  // can include an optional console.log(where) to see what's being taken as a query parameter
   try {
     if (where) {
-      // inner joins to enable searching with filters
+      // inner joins to enable searching with store filters
       // on postman, the first ID column refers to store ID, better to just ignore it and
       // read through FK_productsID and FK_storesID to know which is which
       sql += `INNER JOIN products_stores ON products_stores.FK_storesID = products.ID
@@ -85,6 +81,7 @@ router.get("/", async function (req, res) {
 });
 
 // GET one product
+// contains the joins to show stores that contain a given product
 router.get("/:id", async function (req, res, next) {
   let { id } = req.params;
 
@@ -98,7 +95,6 @@ router.get("/:id", async function (req, res, next) {
     WHERE products.ID = ${id}
     `);
 
-    // res.status(201).send(results.data);
     let products = await results;
     products = joinToJson(products);
     // checking if the response array is empty, meaning the store doesnt exist
@@ -115,10 +111,8 @@ router.get("/:id", async function (req, res, next) {
 
 // INSERT a new product into the DB
 router.post("/", async function (req, res) {
-  //your code here
   let { productName, price, quantity, quantityUnits, productImage } = req.body;
-  // we usually use req.body for post because were ADDING to something through that is in the body
-  // as opposed to req.params which is trying to FIND something based on a specific value in the param
+
   try {
     await db(`INSERT INTO products (productName, price, quantity, quantityUnits, productImage) VALUES
     ('${productName}', ${price}, ${quantity}, '${quantityUnits}', '${productImage}')`);

@@ -1,4 +1,3 @@
-// import logo from "./logo.svg";
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
@@ -18,22 +17,27 @@ function App() {
   const [stores, setStores] = useState([]);
   const [productProfile, setProductProfile] = useState({});
   const [storeProfile, setStoreProfile] = useState({});
-  // const [featuredProducts, setFeaturedProducts] = useState([]);
 
   useEffect(() => {
     getAllProducts();
     getStores();
   }, []);
 
-  // get products function
+  // get products function (includes search query stuff)
   async function getProducts(filters) {
     let fetchString = "/products";
+    // if ANY query exists
     if (filters) {
+      // separate them into for example productName and 'gel'
       let filter = Object.keys(filters)
+        // then filter through the fields that actually have a query
         .filter((q) => filters[q].length > 0)
+        // go through each one of them and replace any spaces with a +, for the url
         .map((e) => `${e}=${filters[e].replace(" ", "+")}`)
+        // join it with an &, also for the url
         .join("&");
       console.log(filters);
+      // then finally, add it onto the url
       fetchString += `?${filter}`;
       console.log(fetchString);
     }
@@ -53,7 +57,7 @@ function App() {
     }
   }
 
-  // get ALL products
+  // get ALL products (only used this for the 'show all products' button on the product page)
   async function getAllProducts() {
     let options = {
       method: "GET",
@@ -111,29 +115,6 @@ function App() {
     }
   }
 
-  // // feature products
-  // async function featureProducts() {
-  //   setFeaturedProducts([]);
-  //   let options = {
-  //     method: "GET",
-  //   };
-  //   if (featuredProducts.length < 3) {
-  //     try {
-  //       let response = await fetch("/products", options);
-  //       if (response.ok) {
-  //         let data = await response.json();
-  //         setFeaturedProducts(data);
-  //       } else {
-  //         console.log(
-  //           `server error: ${response.status} ${response.statusText}`
-  //         );
-  //       }
-  //     } catch (err) {
-  //       console.log(`network error: ${err.message}`);
-  //     }
-  //   }
-  // }
-
   // get stores function
   async function getStores() {
     let options = {
@@ -168,7 +149,7 @@ function App() {
     }
   }
 
-  // add products
+  // add stores
   async function addStores(newStore) {
     newStore.id = stores.length + 1;
 
@@ -191,23 +172,17 @@ function App() {
     }
   }
 
-  // redirect to product
+  // redirect to product (for the 'products seen at this store' part to be clickable)
   function redirectToProduct(id) {
     setProductProfile(null); // remove old product if there was one
     showProduct(id); //fetch product, save in productProfile state, and redirect
   }
 
-  // redirect to store
+  // redirect to store (for the 'stores this product has been found at' part to be clickable)
   function redirectToStore(id) {
     setStoreProfile(null); // remove old store if there was one
     showStore(id); //fetch store, save in storeProfile state, and redirect
   }
-
-  // search for product function
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   handleProductSearch(query);
-  // }
 
   return (
     <div className="App">

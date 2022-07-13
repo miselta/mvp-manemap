@@ -1,6 +1,7 @@
 import React from "react";
 import "./StoresPage.css";
 
+// this shows all the stores
 function StoresPage(props) {
   if (!props.stores) {
     return <h2>Loading....</h2>;

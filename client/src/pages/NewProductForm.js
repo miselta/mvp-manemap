@@ -42,6 +42,7 @@ function NewProductForm(props) {
             required
           />
         </label>
+        {/* I commented out object being entered because it will vary by store */}
         {/* <label className="form-label">
           Price (€)
           <input
@@ -90,9 +91,11 @@ function NewProductForm(props) {
             required
           />
         </label>
+        {/* below, I commented out my attempt to try to put a store dropdown to 
+        be able to choose where a product being added is found */}
         {/* <label for="stores">Stores to find this in</label>
         <select name="stores" id="stores">
-          <option value="volvo">Volvo</option>
+          <option>Volvo</option>
         </select> */}
         <button type="submit" class="btn btn-light ms-5">
           Add Product

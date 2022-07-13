@@ -1,5 +1,6 @@
 import React from "react";
 
+// this is the view for showing one product's profile
 function ShowProduct(props) {
   let p = props.product;
   return (

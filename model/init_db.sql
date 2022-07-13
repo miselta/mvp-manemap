@@ -48,11 +48,16 @@ ALTER TABLE products_stores ADD CONSTRAINT products_stores_fk1 FOREIGN KEY (FK_s
 INSERT INTO products (productName, price, quantity, quantityUnits, productImage) VALUES 
 ('Comb', 5, 10, 'g', 'https://cdn.shopify.com/s/files/1/2236/8407/products/CCC-2T_800x.jpg?v=1552581024'), 
 ('Gel', 8, 250, 'ml', 'https://m.media-amazon.com/images/I/71C3bKEcS-L._AC_SX425_.jpg'), 
-('Beads', 10, 50, 'g', 'https://sc04.alicdn.com/kf/Hdaa53a9673de47be967e4ddfabdec4f1R.jpg');
+('Beads', 10, 50, 'g', 'https://sc04.alicdn.com/kf/Hdaa53a9673de47be967e4ddfabdec4f1R.jpg'),
+('Cream', 10, 100, 'ml', 'https://mynatural.co.za/wp-content/uploads/2017/09/CurlingCream.png'),
+('Castor Oil', 10, 100, 'ml', 'https://images.hollandandbarrettimages.co.uk/productimages/HB/724/033816_A.jpg'),
+('Shampoo', 7, 250, 'ml', 'https://www.druni.es/media/catalog/product/7/0/7003143.jpg');
+
 
 INSERT INTO stores (storeName, storeAddress, storeCity, storeCountry, storePostalCode, storeImage, blackOwned, localOwned) VALUES 
 ('Diva Hair Store', 'Carrer d''en Grassot, 15', 'Barcelona', 'Spain', '08025', 'https://images.bizbuysell.com/shared/listings/196/1966666/0526ea4f-423e-4f1f-b2b7-530e8f20ef6d-W496.jpg', 0, 1), 
 ('Angel Beauty Supply', 'Carrer del Casp, 33', 'Palma de Mallorca', 'Spain', '07012', 'https://www.gannett-cdn.com/presto/2022/01/28/PPEN/5a3a282f-dd35-4bb2-bdff-ddcbaaca65dc-JoJos_Beauty_Supply-001.jpg?crop=2999,1687,x0,y381&width=660&height=372&format=pjpg&auto=webp', 1, 1),
-('Palacio del Afro', 'Calle de la Hada, 44', 'Malaga', 'Spain', '04040', 'https://s3-media0.fl.yelpcdn.com/bphoto/ihHkLumMeswOR_XXfeICAw/l.jpg', 1, 0);
+('Palacio del Afro', 'Calle de la Hada, 44', 'Malaga', 'Spain', '04040', 'https://s3-media0.fl.yelpcdn.com/bphoto/ihHkLumMeswOR_XXfeICAw/l.jpg', 1, 0),
+('Hairopolis', 'Calle de Naranja', 'Madrid', 'Spain', '33444', 'https://archives.rgnn.org/wp-content/uploads/2019/08/2-750x500.jpg', 1, 0);
 
-INSERT INTO products_stores (FK_productsID, FK_storesID, productPrice) VALUES (1, 1, 10), (2, 3, 5), (3, 3, 4), (1, 2, 3);
+INSERT INTO products_stores (FK_productsID, FK_storesID, productPrice) VALUES (1, 1, 10), (2, 3, 5), (3, 3, 4), (1, 2, 3), (4, 2, 7), (4, 4, 10), (6, 4, 8), (5, 1, 9);

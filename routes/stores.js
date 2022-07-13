@@ -2,11 +2,6 @@ var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
 
-/* GET stores listing. */
-// router.get("/", function (req, res, next) {
-//   res.send("respond with a store");
-// });
-
 // join to JSON
 function joinToJson(results) {
   // Get first row
@@ -26,7 +21,7 @@ function joinToJson(results) {
     }));
   }
 
-  // Create product obj
+  // Create store obj
   let stores = {
     id: row0.storesID,
     storeName: row0.storeName,
@@ -52,6 +47,7 @@ router.get("/", async function (req, res, next) {
 });
 
 // GET one store
+// contains the joins to show products that are found at a given store
 router.get("/:id", async function (req, res, next) {
   let { id } = req.params;
 
@@ -79,7 +75,6 @@ router.get("/:id", async function (req, res, next) {
 
 // INSERT a new store into the DB
 router.post("/", async function (req, res) {
-  //your code here
   let {
     storeName,
     storeAddress,
