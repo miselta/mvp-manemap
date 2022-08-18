@@ -1,4 +1,4 @@
-HELLO! Welcome to Miselta's MVP project :)
+HELLO! Welcome to Miselta's MVP project - my first ever full stack app :)
 
 # ABOUT
 
