@@ -44,6 +44,13 @@ To install the database:
 - Then, `cd client` on the project folder to access the client folder, and run `npm start` again to run the client.
 - Feliz coding!!
 
+# DEMO
+
+
+https://user-images.githubusercontent.com/105108470/185431439-f7e6811d-f784-4dfb-ac1b-00932933c313.mp4
+
+
+
 # BUGS:
 
 - SOME pages work on refresh, some don't. So don't be surprised if something breaks as soon as it refreshes.
