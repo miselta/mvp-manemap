@@ -20,8 +20,7 @@ This project is called ManeMap, a directory of beauty supply products & stores. 
 # DATABASE & STRUCTURE INSTALATION
 
 The database consists of three tables - products, stores, and the junction table called products_stores.
-You can view that here:
-![Database-Tables](mvp-manemap/database-tables.png)
+![Database-Tables](https://user-images.githubusercontent.com/105108470/185428540-6fd48280-7ae2-4a00-9b05-493b3b81aff3.png)
 
 There is an `INIT_DB.SQL` file with the SQL commands in it to create the tables, as well as the default data.
 
