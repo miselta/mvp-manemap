@@ -23,27 +23,26 @@ The database consists of three tables - products, stores, and the junction table
 You can view that here:
 ![Database-Tables](mvp-hair-app/database-tables.png)
 
-There is an `INIT_DB.SQL` file with the SQL commands in it, as well as the default data at the bottom of it.
+There is an `INIT_DB.SQL` file with the SQL commands in it to create the tables, as well as the default data.
 
 To install the database:
 
 - In your terminal, access the MySQL interface by running `mysql -u root -p`
-- Create a new database called hair, run the command: `create database hair;`
+- Create a new database called hair - run the command: `create database hair;`
 - In VSCode: create a `.env` file with the following information:
   DB_HOST=localhost
   DB_USER=root
   DB_NAME=hair
   DB_PASS=(your password here)
-- Create a `.gitignore` file, then add the line `node_modules/` to it.
-- Add the line `.env` to your `.gitignore` file.
-- Take a look at the `INIT_DB.SQL` file in the model folder for the current database information, and run `npm run migrate` to update the database with this information. Run this command again every time you make changes to that file - so that they can be updated.
-- In your MySQL console, you can run `use hair;` and then `describe hair;` to see the structure of the reviews table.
+- Create a `.gitignore` file, then, on two separate lines, add `node_modules/` and `.env` to it.
+- Run `npm run migrate` in the project folder to update the database with this information. Run this command again every time you make changes to that file so that they can be updated.
+- In your MySQL console, you can run `use hair;` and then `describe hair;` to see the structure of the hair table.
 
 # BE/FE INSTALATION
 
 - After you clone the git repository, run `npm install` in your terminal.
-- Then, run `npm start` to run the model.
-- Then, run `cd client` on the project folder to access the client folder, and run `npm start` again to run the client.
+- Then, run `npm start` to start the backend.
+- Then, `cd client` on the project folder to access the client folder, and run `npm start` again to run the client.
 - Feliz coding!!
 
 # BUGS:
@@ -64,6 +63,7 @@ To install the database:
 - More cities and countries.
 - Banners to indicate Black-owned & local-owned stores (these fields already exist in the database but I didn't get to using them through a checkbox/banner).
 - Including ways to find hair salons and protective hairstylists as well, also by location.
+
 
 This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona.
 
