@@ -16,10 +16,11 @@ To install the database:
 - Create a new database called hair - run the command: `create database hair;`
 - In VSCode: create a `.env` file with the following information:
 
-  bash```DB_HOST=localhost
+ ``` bash
+  DB_HOST=localhost
   DB_USER=root
   DB_NAME=hair
-  DB_PASS=(your password here)```bash
+  DB_PASS=(your password here)```
   
 - Create a `.gitignore` file, then, on two separate lines, add `node_modules/` and `.env` to it.
 - Run `npm run migrate` in the project folder to update the database with this information. Run this command again every time you make changes to that file so that they can be updated.
