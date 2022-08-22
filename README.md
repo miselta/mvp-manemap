@@ -1,23 +1,25 @@
 HELLO! Welcome to Miselta's MVP project - my first ever full stack app :)
 
-# ABOUT
+# About
 
 This project is called ManeMap, a directory of beauty supply products & stores. Geared mainly towards the black community and individuals with curly & afro-hair types, its main purpose is to streamline the process of locating specialized beauty supply stores & products.
 
-# KEY TECHNOLOGIES
+# Technologies
 
-(In the order that I used them)
+(In the order of use)
 
 - Figma (optional): To visualize the the styling of the page in a digital environment.
 - DBDesigner (optional): To visualize the database tables.
 - VS Code: To code.
 - mySQL: To store information in the database.
 - Node.js and Express: To get the BackEnd working.
-- Postman: To test the BackEnd Routes (currently have GET, GET by Id, and POST).
-- React & React Router: To get the FrontEnd working.
-- Bootstrap (optional): For styling - I used a combination of this with Vanilla CSS.
+- Postman API: To test the BackEnd Routes (currently have GET, GET by id, and POST).
+- React & React Router: To get the FrontEnd working, to use private routes.
+- Bootstrap (optional): For styling.
+- HTML
+- CSS
 
-# DATABASE & STRUCTURE INSTALATION
+# Database Instalation
 
 The database consists of three tables - products, stores, and the junction table called products_stores.
 ![Database-Tables](https://user-images.githubusercontent.com/105108470/185428540-6fd48280-7ae2-4a00-9b05-493b3b81aff3.png)
@@ -37,21 +39,21 @@ To install the database:
 - Run `npm run migrate` in the project folder to update the database with this information. Run this command again every time you make changes to that file so that they can be updated.
 - In your MySQL console, you can run `use hair;` and then `describe hair;` to see the structure of the hair table.
 
-# BE/FE INSTALATION
+# BE/FE Instalation
 
 - After you clone the git repository, run `npm install` in your terminal.
 - Then, run `npm start` to start the backend.
 - Then, `cd client` on the project folder to access the client folder, and run `npm start` again to run the client.
 - Feliz coding!!
 
-# DEMO
+# Demo
 
 
 https://user-images.githubusercontent.com/105108470/185431439-f7e6811d-f784-4dfb-ac1b-00932933c313.mp4
 
 
 
-# BUGS:
+# Bugs:
 
 - SOME pages work on refresh, some don't. So don't be surprised if something breaks as soon as it refreshes.
 - Product Search:
@@ -60,7 +62,7 @@ https://user-images.githubusercontent.com/105108470/185431439-f7e6811d-f784-4dfb
 - In my junction tables, ID is sometimes 'ID' and other times 'id', so if you need to refer to a specific ID, I recommend taking a look at Postman and seeing what is returned there, and also comparing that with what is in the INIT_DB_SQL file.
 - The stores page styling doesn't respond well to having an odd amount of stores.
 
-# FEATURE EXTENSION IDEAS:
+# Feature Extension Ideas:
 
 - Getting the product search to work with all the input fields, as well as with two words.
 - Having a store search, similar to the product search. Also being able to search stores by products they have.
