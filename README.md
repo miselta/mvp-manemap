@@ -1,8 +1,7 @@
-HELLO! Welcome to Miselta's MVP project - my first ever full stack app :)
 
 # About
 
-This project is called ManeMap, a directory of beauty supply products & stores. Geared mainly towards the black community and individuals with curly & afro-hair types, its main purpose is to streamline the process of locating specialized beauty supply stores & products.
+This MVP project is called ManeMap, a directory of beauty supply products & stores. Geared mainly towards the black community and individuals with curly & afro-hair types, its main purpose is to streamline the process of locating specialized beauty supply stores & products.
 
 # Database Instalation
 
@@ -16,10 +15,12 @@ To install the database:
 - In your terminal, access the MySQL interface by running `mysql -u root -p`
 - Create a new database called hair - run the command: `create database hair;`
 - In VSCode: create a `.env` file with the following information:
-  `DB_HOST=localhost
+
+  bash```DB_HOST=localhost
   DB_USER=root
   DB_NAME=hair
-  DB_PASS=(your password here)`
+  DB_PASS=(your password here)```bash
+  
 - Create a `.gitignore` file, then, on two separate lines, add `node_modules/` and `.env` to it.
 - Run `npm run migrate` in the project folder to update the database with this information. Run this command again every time you make changes to that file so that they can be updated.
 - In your MySQL console, you can run `use hair;` and then `describe hair;` to see the structure of the hair table.
@@ -63,7 +64,7 @@ https://user-images.githubusercontent.com/105108470/185431439-f7e6811d-f784-4dfb
 
 # Technologies
 
-(In the order of use)
+(In the rough order of use)
 
 - Figma (optional): To visualize the the styling of the page in a digital environment.
 - DBDesigner (optional): To visualize the database tables.
@@ -71,7 +72,7 @@ https://user-images.githubusercontent.com/105108470/185431439-f7e6811d-f784-4dfb
 - mySQL: To store information in the database.
 - Node.js and Express: To get the BackEnd working.
 - Postman API: To test the BackEnd Routes (currently have GET, GET by id, and POST).
-- React & React Router: To get the FrontEnd working, to use private routes.
+- React.js & React Router: To get the FrontEnd working, to use private routes.
 - Bootstrap (optional): For styling.
 - JavaScript ES6+
 - HTML
