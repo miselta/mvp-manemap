@@ -4,21 +4,6 @@ HELLO! Welcome to Miselta's MVP project - my first ever full stack app :)
 
 This project is called ManeMap, a directory of beauty supply products & stores. Geared mainly towards the black community and individuals with curly & afro-hair types, its main purpose is to streamline the process of locating specialized beauty supply stores & products.
 
-# Technologies
-
-(In the order of use)
-
-- Figma (optional): To visualize the the styling of the page in a digital environment.
-- DBDesigner (optional): To visualize the database tables.
-- VS Code: To code.
-- mySQL: To store information in the database.
-- Node.js and Express: To get the BackEnd working.
-- Postman API: To test the BackEnd Routes (currently have GET, GET by id, and POST).
-- React & React Router: To get the FrontEnd working, to use private routes.
-- Bootstrap (optional): For styling.
-- HTML
-- CSS
-
 # Database Instalation
 
 The database consists of three tables - products, stores, and the junction table called products_stores.
@@ -53,6 +38,8 @@ https://user-images.githubusercontent.com/105108470/185431439-f7e6811d-f784-4dfb
 
 
 
+<!--- not sure if these have a place in the a public readme
+
 # Bugs:
 
 - SOME pages work on refresh, some don't. So don't be surprised if something breaks as soon as it refreshes.
@@ -71,6 +58,24 @@ https://user-images.githubusercontent.com/105108470/185431439-f7e6811d-f784-4dfb
 - More cities and countries.
 - Banners to indicate Black-owned & local-owned stores (these fields already exist in the database but I didn't get to using them through a checkbox/banner).
 - Including ways to find hair salons and protective hairstylists as well, also by location.
+
+--->
+
+# Technologies
+
+(In the order of use)
+
+- Figma (optional): To visualize the the styling of the page in a digital environment.
+- DBDesigner (optional): To visualize the database tables.
+- VS Code: To code.
+- mySQL: To store information in the database.
+- Node.js and Express: To get the BackEnd working.
+- Postman API: To test the BackEnd Routes (currently have GET, GET by id, and POST).
+- React & React Router: To get the FrontEnd working, to use private routes.
+- Bootstrap (optional): For styling.
+- JavaScript ES6+
+- HTML
+- CSS
 
 
 This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona.
